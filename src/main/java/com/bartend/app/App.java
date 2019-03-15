@@ -12,6 +12,8 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
+
+      GUIHelper gh = new GUIHelper();
       try{
 	SocketHelper helper = new SocketHelper();
       } catch(URISyntaxException e){
