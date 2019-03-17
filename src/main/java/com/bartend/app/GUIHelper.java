@@ -5,14 +5,18 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.GridLayout;
 import java.awt.Label;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
+import java.lang.Object;
 
 
 public class GUIHelper{
+  public JTable lobby;
   public GUIHelper(){
     final JFrame frame = new JFrame("Bartend");
 
-    frame.setSize(500, 300);
+    frame.setSize(1000, 800);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
@@ -28,13 +32,13 @@ public class GUIHelper{
  
   private static JPanel panelTwo(){
     JPanel p = new JPanel();
-    Object[][] data = {
+    Object[][] data1 = {
       { "Slot 1", "Click to set Item" }, { "Slot 2", "Click to set Item" }
     };	
 
     String[] columnNames = {"Slots", "Drink" };
 
-    JTable j = new JTable(data, columnNames);
+    JTable j = new JTable(data1, columnNames);
     TableColumn sportColumn = j.getColumnModel().getColumn(1);
 
     JComboBox comboBox = new JComboBox();
@@ -49,19 +53,26 @@ public class GUIHelper{
     p.setLayout(new GridLayout(1, 1));
     return p;
   }
-  private static JPanel panelOne(){
+  private JPanel panelOne(){
     JPanel p = new JPanel();
     String[][] data = {
-      { "Whiskey Coke", "Jeffery Pereira" },
-      { "Rocket Fuels", "Luis Giron" }
     };
-
+    
     String[] columnNames = {"Drink Name", "Customer"};
-
-    JTable j = new JTable(data, columnNames);
-    j.setBounds(30, 40, 200, 300);
-    p.add(j);
+    
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("Drink Name");
+    model.addColumn("Customer");
+    lobby = new JTable(model);
+    lobby.setBounds(30, 40, 200, 300);
+    p.add(lobby);
     p.setLayout(new GridLayout(1, 1));
     return p;
+  }
+
+
+  public void addRowToLobby(String drinkName, String userName){
+    DefaultTableModel model = (DefaultTableModel) lobby.getModel();
+    model.addRow(new Object[]{drinkName, userName});
   }
 }

@@ -15,7 +15,7 @@ public class App
 
       GUIHelper gh = new GUIHelper();
       try{
-	SocketHelper helper = new SocketHelper();
+	SocketHelper helper = new SocketHelper(gh);
       } catch(URISyntaxException e){
       }
     }

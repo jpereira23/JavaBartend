@@ -2,6 +2,7 @@ com/bartend/app/GUIHelper.class
 com/bartend/app/HttpHelper.class
 com/bartend/app/SocketHelper.class
 com/bartend/app/App.class
+com/bartend/app/SocketHelper$4.class
 com/bartend/app/SocketHelper$2.class
 com/bartend/app/SocketHelper$3.class
 com/bartend/app/BartendEmitter$OnceListener.class
