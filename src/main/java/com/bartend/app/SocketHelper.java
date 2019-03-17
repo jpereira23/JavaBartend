@@ -8,13 +8,16 @@ import java.net.*;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 
 
 
 public class SocketHelper
 {
   Socket socket;
-  SocketListener listener;
   public SocketHelper() throws URISyntaxException, IOException{
     try{
       socket = IO.socket("http://138.197.205.247:4000");  
@@ -36,6 +39,18 @@ public class SocketHelper
       @Override
       public void call(Object ... args){
 	System.out.println("fuck you");
+      }
+    });
+    socket.on("12345", new Emitter.Listener() {
+      @Override
+      public void call(Object ... args){  
+	JSONObject data = (JSONObject) args[0];	
+	try{
+	 JSONArray anArray = data.getJSONArray("message");
+	 System.out.println(anArray.getString(0));
+	} catch (JSONException e){
+	  System.out.println("Didnt work");
+	}
       }
     });
     socket.open();
