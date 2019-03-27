@@ -55,6 +55,9 @@ public class SocketHelper
       @Override
       public void call(Object ... args){  
 	JSONObject data = (JSONObject) args[0];	
+	JSONAssembler assemble = new JSONAssembler(data);
+	System.out.println("You even reaching here");
+	/*
 	try{
 	  JSONArray anArray = data.getJSONArray("message");
 	  JSONObject anObject = anArray.optJSONObject(0);
@@ -63,10 +66,10 @@ public class SocketHelper
 	  String drinkName = object1.getString("drinkName");
 	  String username = object2.getString("username");
 	  aGUI.addRowToLobby(drinkName, username);
-	  
 	} catch (JSONException e){
 	  System.out.println("Didnt work");
 	}
+	*/
       }
     });
     socket.open();

@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Color;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +18,6 @@ public class GUIHelper{
     final JFrame frame = new JFrame("Bartend");
 
     frame.setSize(1000, 800);
-    frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
 
@@ -28,6 +28,9 @@ public class GUIHelper{
     tabbedPane.addTab("Configure Slots", panelTwo());
 
     frame.getContentPane().add(tabbedPane);
+    frame.getContentPane().setBackground(new java.awt.Color(255, 127, 80));
+
+    frame.setVisible(true);
   }
  
   private static JPanel panelTwo(){
